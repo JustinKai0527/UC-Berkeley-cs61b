@@ -19,7 +19,7 @@ public class GuitarString {
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
         // TODO: Create a buffer with capacity = SR / frequency. You'll need to
-        int temp = Math.round((SR / frequency));
+        int temp = (int)Math.round(SR / frequency);
         buffer = new ArrayRingBuffer<>((int) temp);
         //       cast the result of this divsion operation into an int. For better
         //       accuracy, use the Math.round() function before casting.
@@ -35,7 +35,7 @@ public class GuitarString {
         // TODO: Dequeue everything in the buffer, and replace it with random numbers
         //       between -0.5 and 0.5. You can get such a number by using:
         while(!buffer.isEmpty()){
-            buffer.Dequeue();
+            buffer.dequeue();
         }
         
         Set<Double> check = new HashSet<>();
@@ -57,7 +57,7 @@ public class GuitarString {
         //       the average of the two multiplied by the DECAY factor.
         //       Do not call StdAudio.play().
         double avg = buffer.peek();
-        buffer.Dequeue();
+        buffer.dequeue();
         avg = (avg + buffer.peek()) * DECAY / 2;
         buffer.enqueue(avg);
     }
