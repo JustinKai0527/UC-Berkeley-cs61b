@@ -31,7 +31,7 @@ public class PercolationStats {
     }
 
     public double stddev(){                                         // sample standard deviation of percolation threshold
-       return StdStats.stddev();
+       return StdStats.stddev(arr);
     }
     
     public double confidenceLow(){                                  // low endpoint of 95% confidence interval
