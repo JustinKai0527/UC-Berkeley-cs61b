@@ -22,6 +22,7 @@ public class Percolation {
     
     public void open(int row, int col){       // open the site (row, col) if it is not open already
         if(row < 0 || row >= size || col < 0 || col >= size)  throw new java.lang.IndexOutOfBoundsException();
+        if(isOpen(row,col))  return;
         count++;
         arr[row][col] = true;
         if(col + 1 < size && isOpen(row, col+1)){
