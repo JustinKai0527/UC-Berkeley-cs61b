@@ -6,12 +6,13 @@ public class Percolation {
     public int size;
     public boolean[][] arr;
     public int count = 0;
+    WeightedQuickUnionUF uf;
     
     public Percolation(int N){                // create N-by-N grid, with all sites initially blocked
         if(N <= 0)  throw new java.lang.IllegalArgumentException("Not correct argument");
         size = N;
         arr = new boolean[size][size];
-        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(N*N+2);
+        uf = new WeightedQuickUnionUF(N*N+2);
         for(int i=1; i<N; i++){
             uf.union(0, i);
             uf.union(N*N+1, (N*N+1)-i);
