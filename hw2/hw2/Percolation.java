@@ -43,7 +43,7 @@ public class Percolation {
     }
     
     public boolean isFull(int row, int col){  // is the site (row, col) full?
-        return uf.connected(0,xyTo1d(row,col));
+        return uf.connected(0,xyTo1d(row,col)) && arr[col][row];
     }
 
     public int numberOfOpenSites(){           // number of open sites
