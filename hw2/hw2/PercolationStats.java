@@ -23,7 +23,7 @@ public class PercolationStats {
                 test.open(row,col);
             }
             
-            arr[i] = test.numberOfOpenSites() / (N*N);
+            arr[i] = (double) test.numberOfOpenSites() / (N*N);
         }
     }
 
