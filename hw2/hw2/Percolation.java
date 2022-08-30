@@ -7,7 +7,7 @@ public class Percolation {
     public boolean[][] arr;
     public int count = 0;
     WeightedQuickUnionUF uf;
-    
+
     public Percolation(int N){                // create N-by-N grid, with all sites initially blocked
         if(N <= 0)  throw new java.lang.IllegalArgumentException("Not correct argument");
         size = N;
@@ -43,7 +43,7 @@ public class Percolation {
     }
     
     public boolean isFull(int row, int col){  // is the site (row, col) full?
-        return uf.connect(0,xyTo1d(row,col));
+        return uf.connected(0,xyTo1d(row,col));
     }
 
     public int numberOfOpenSites(){           // number of open sites
@@ -51,7 +51,7 @@ public class Percolation {
     }
 
     public boolean percolates(){             // does the system percolate?
-        return uf.connect(0,size*size+1);
+        return uf.connected(0,size*size+1);
     }
     
     public static void main(String[] args){}   // use for unit testing (not required, but keep this here for the autograder)
