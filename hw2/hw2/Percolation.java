@@ -13,7 +13,7 @@ public class Percolation {
         size = N;
         arr = new boolean[size][size];
         uf = new WeightedQuickUnionUF(N*N+2);
-        for(int i=1; i<N; i++){
+        for(int i=1; i<=N; i++){
             uf.union(0, i);
             uf.union(N*N+1, (N*N+1)-i);
         }
