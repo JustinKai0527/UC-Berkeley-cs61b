@@ -4,8 +4,8 @@ import edu.princeton.cs.introcs.StdRandom;
 import edu.princeton.cs.introcs.StdStats;
 
 public class PercolationStats {
-    public double time;
-    public double[] arr;
+    private double time;
+    private double[] arr;
     public PercolationStats(int N, int T, PercolationFactory pf){   // perform T independent experiments on an N-by-N grid
         // if(N <= 0 || T <= 0)  throw new java.lang.IllegalArgumentException();
         

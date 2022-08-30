@@ -3,9 +3,9 @@ package hw2;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-    public int size;
-    public boolean[][] arr;
-    public int count = 0;
+    private int size;
+    private boolean[][] arr;
+    private int count = 0;
     WeightedQuickUnionUF uf;
 
     public Percolation(int N){                // create N-by-N grid, with all sites initially blocked
@@ -22,7 +22,7 @@ public class Percolation {
     public void open(int row, int col){       // open the site (row, col) if it is not open already
         if(row < 0 || row >= size || col < 0 || col >= size)  throw new java.lang.IndexOutOfBoundsException();
         count++;
-        arr[col][row] = true;
+        arr[row][col] = true;
         if(col + 1 < size && isOpen(row, col+1)){
             uf.union(xyTo1d(row, col), xyTo1d(row, col+1));
         }  
@@ -39,7 +39,7 @@ public class Percolation {
     
     public boolean isOpen(int row, int col){  // is the site (row, col) open?
         if(row < 0 || row >= size || col < 0 || col >= size)  throw new java.lang.IndexOutOfBoundsException();
-        return arr[col][row];
+        return arr[row][col];
     }
     
     public boolean isFull(int row, int col){  // is the site (row, col) full?
@@ -57,6 +57,6 @@ public class Percolation {
     public static void main(String[] args){}   // use for unit testing (not required, but keep this here for the autograder)
     
     private int xyTo1d(int row, int col){
-        return size * col + row + 1;
+        return size * row + col + 1;
     }
 }
