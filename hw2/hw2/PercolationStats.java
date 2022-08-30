@@ -6,8 +6,9 @@ import edu.princeton.cs.introcs.StdStats;
 public class PercolationStats {
     private double time;
     private double[] arr;
+
     public PercolationStats(int N, int T, PercolationFactory pf){   // perform T independent experiments on an N-by-N grid
-        // if(N <= 0 || T <= 0)  throw new java.lang.IllegalArgumentException();
+        if(N <= 0 || T <= 0)  throw new java.lang.IllegalArgumentException();
         
         time = T;
         arr = new double[N];
@@ -22,7 +23,7 @@ public class PercolationStats {
                 test.open(row,col);
             }
             
-            arr[i] = test.numberOfOpenSites()/N*N;
+            arr[i] = test.numberOfOpenSites() / (N*N);
         }
     }
 
