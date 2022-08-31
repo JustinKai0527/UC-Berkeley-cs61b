@@ -1,28 +1,39 @@
 package hw2;
 
+import bearmaps.hw4.lectureexample.WeightedDirectedGraph;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
+//example 1 : create another UF to prevent the backwash
 public class Percolation {
     private int size;
     private boolean[][] arr;
     private int count = 0;
     private WeightedQuickUnionUF uf;
+    private WeightedQuickUnionUF check_back_wash;
 
     public Percolation(int N){                // create N-by-N grid, with all sites initially blocked
+
         if(N <= 0)  throw new java.lang.IllegalArgumentException("Not correct argument");
+
         size = N;
         arr = new boolean[size][size];
         uf = new WeightedQuickUnionUF(N*N+2);
+        check_back_wash = new WeightedQuickUnionUF(N*N+1);
         count = 0;
+
         for(int i=1; i<=N; i++){
             uf.union(0, i);
             uf.union(N*N+1, (N*N+1)-i);
+            check_back_wash.union(0,i);
         }
     }
     
     public void open(int row, int col){       // open the site (row, col) if it is not open already
+
         if(row < 0 || row >= size || col < 0 || col >= size)  throw new java.lang.IndexOutOfBoundsException();
+
         if(isOpen(row,col))  return;
+
         count++;
         arr[row][col] = true;
         if(col + 1 < size && isOpen(row, col+1)){
@@ -45,7 +56,7 @@ public class Percolation {
     }
     
     public boolean isFull(int row, int col){  // is the site (row, col) full?
-        return uf.connected(0,xyTo1d(row,col)) && isOpen(row,col);
+        return check_back_wash.connected(0,xyTo1d(row,col)) && isOpen(row,col);
     }
 
     public int numberOfOpenSites(){           // number of open sites
