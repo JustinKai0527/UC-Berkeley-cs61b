@@ -11,7 +11,7 @@ public class PercolationStats {
         if(N <= 0 || T <= 0)  throw new java.lang.IllegalArgumentException();
         
         time = T;
-        arr = new double[N];
+        arr = new double[T];
 
         for(int i=0; i<T; i++){
 
