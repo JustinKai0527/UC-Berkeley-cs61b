@@ -1,6 +1,5 @@
 package hw2;
 
-import bearmaps.hw4.lectureexample.WeightedDirectedGraph;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 //example 1 : create another UF to prevent the backwash
