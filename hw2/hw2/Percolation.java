@@ -35,17 +35,26 @@ public class Percolation {
 
         count++;
         arr[row][col] = true;
+
         if(col + 1 < size && isOpen(row, col+1)){
+
             uf.union(xyTo1d(row, col), xyTo1d(row, col+1));
+            check_back_wash.union(xyTo1d(row, col), xyTo1d(row, col+1))
         }  
         if(col - 1 >= 0 && isOpen(row, col-1)){
+
             uf.union(xyTo1d(row, col), xyTo1d(row, col-1));
+            check_back_wash.union(xyTo1d(row, col), xyTo1d(row, col-1))
         }
         if(row + 1 < size && isOpen(row+1, col)){
+
             uf.union(xyTo1d(row, col), xyTo1d(row+1, col));
+            check_back_wash.union(xyTo1d(row, col), xyTo1d(row+1, col))
         }
         if(row - 1 >= 0 && isOpen(row-1, col)){
+
             uf.union(xyTo1d(row, col), xyTo1d(row-1, col));
+            check_back_wash.union(xyTo1d(row, col), xyTo1d(row-1, col))
         }
     }    
     
