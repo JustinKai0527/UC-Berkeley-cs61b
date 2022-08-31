@@ -51,10 +51,10 @@ public class Percolation {
             uf.union(xyTo1d(row, col), xyTo1d(row+1, col));
             check_back_wash.union(xyTo1d(row, col), xyTo1d(row+1, col));
         }
-        if(row - 1 >= 0 && isOpen(row-1, col)){
+        if(row - 1 >= -1 && isOpen(row-1, col)){
 
-            uf.union(xyTo1d(row, col), xyTo1d(row-1, col));
-            if(row - 1 == -1)  check_back_wash.union(xyTo1d(row, col), 0);
+            if(row-1 >= 0)  uf.union(xyTo1d(row, col), xyTo1d(row-1, col));
+            check_back_wash.union(xyTo1d(row, col), 0);
         }
     }    
     
