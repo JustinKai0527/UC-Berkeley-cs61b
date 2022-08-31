@@ -20,11 +20,11 @@ public class Percolation {
         check_back_wash = new WeightedQuickUnionUF(N*N+1);
         count = 0;
 
-        for(int i=1; i<=N; i++){
-            uf.union(0, i);
-            uf.union(N*N+1, (N*N+1)-i);
-            check_back_wash.union(0,i);
-        }
+        // for(int i=1; i<=N; i++){
+        //     uf.union(0, i);
+        //     uf.union(N*N+1, (N*N+1)-i);
+        //     check_back_wash.union(0,i);
+        // }                                       //don't first connect the top and the bottom
     }
     
     public void open(int row, int col){       // open the site (row, col) if it is not open already
@@ -46,12 +46,12 @@ public class Percolation {
             uf.union(xyTo1d(row, col), xyTo1d(row, col-1));
             check_back_wash.union(xyTo1d(row, col), xyTo1d(row, col-1));
         }
-        if(row + 1 < size && isOpen(row+1, col)){
+        if(row + 1 <= size && isOpen(row+1, col)){
 
             uf.union(xyTo1d(row, col), xyTo1d(row+1, col));
-            check_back_wash.union(xyTo1d(row, col), xyTo1d(row+1, col));
+            if(row + 1 < size)  check_back_wash.union(xyTo1d(row, col), xyTo1d(row+1, col));
         }
-        if(row - 1 >= 0 && isOpen(row-1, col)){
+        if(row - 1 >= -1 && isOpen(row-1, col)){
 
             uf.union(xyTo1d(row, col), xyTo1d(row-1, col));
             check_back_wash.union(xyTo1d(row, col), xyTo1d(row-1, col));
