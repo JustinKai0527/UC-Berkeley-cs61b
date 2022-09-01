@@ -32,7 +32,7 @@ public class SimpleOomage implements Oomage {
         } else {
             // TODO: Write a perfect hash function for Simple Oomages.
 
-            return 0;
+            return this.red + this.green + this.blue;
         }
     }
 
